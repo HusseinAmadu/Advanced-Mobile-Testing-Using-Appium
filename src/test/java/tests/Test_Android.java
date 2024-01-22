@@ -21,7 +21,7 @@ public class Test_Android extends TestPage{
     }
      @Test(dataProvider = "task data")
     public void test_add_Task(String taskName, String taskDesc) throws MalformedURLException {
-         androidStarUp();
+         androidStarUp("10000","Android Emulator","emulator-5556");
          taskListPage = new TaskListPage(driver);
          creatTaskPage = new TaskPage(driver);
          taskListPage.Alert();
@@ -33,5 +33,17 @@ public class Test_Android extends TestPage{
          teardown();
      }
 
-
+    @Test(dataProvider = "task data")
+    public void test_add_Task2(String taskName, String taskDesc) throws MalformedURLException {
+        androidStarUp("10001","Android Emulator","emulator-5554");
+        taskListPage = new TaskListPage(driver);
+        creatTaskPage = new TaskPage(driver);
+        taskListPage.Alert();
+        taskListPage.clickAddTaskBtn();
+        creatTaskPage.enterTaskName(taskName);
+        creatTaskPage.enterTaskDesc(taskDesc);
+        creatTaskPage.clickSaveBtn();
+        driver.hideKeyboard();
+        teardown();
+    }
 }

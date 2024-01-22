@@ -11,13 +11,14 @@ import java.net.URL;
 public class TestPage extends AbstractTestNGCucumberTests {
 
 public static AppiumDriver driver;
-    public static void androidStarUp() throws MalformedURLException {
+    public static void androidStarUp(String port, String deviceName, String udid) throws MalformedURLException {
         DesiredCapabilities dc = new DesiredCapabilities();
         dc.setCapability("platformName","Android");
-        dc.setCapability("deviceName","Android Emulator");
+        dc.setCapability("deviceName",deviceName);
+        dc.setCapability("udid",udid);
         dc.setCapability("appPackage","com.jeffprod.todo");
         dc.setCapability("appActivity","com.jeffprod.todo.ActivityMain");
-      driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"),dc);
+      driver = new AndroidDriver(new URL("http://localhost:"+port+"/wd/hub"),dc);
     }
 
     public void teardown(){

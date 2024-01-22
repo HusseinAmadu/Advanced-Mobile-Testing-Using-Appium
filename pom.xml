@@ -12,8 +12,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
   </properties>
-
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -60,4 +61,18 @@
       <version>6.10.2</version>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0</version> <!-- Use the latest version -->
+        <configuration>
+          <parallel>Test_Android</parallel> <!-- You can use "classes" or "both" as well -->
+          <threadCount>4</threadCount> <!-- Set the number of parallel threads -->
+          <perCoreThreadCount>true</perCoreThreadCount> <!-- Adjusts thread count based on available cores -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

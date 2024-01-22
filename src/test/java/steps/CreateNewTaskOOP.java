@@ -14,11 +14,19 @@ public class CreateNewTaskOOP extends TestPage {
 
     @Given("Clcik add new task")
     public void clcikAddNewTask() throws MalformedURLException {
-      androidStarUp();
+      androidStarUp("10000","Android Emulator","emulator-5556");
       taskPage = new TaskPage(driver);
       taskListPage = new TaskListPage(driver);
       taskListPage.Alert();
       taskListPage.clickAddTaskBtn();
+    }
+    @Given("Clcik add new task")
+    public void clcikAddNewTask2() throws MalformedURLException {
+        androidStarUp("10001","Android Emulator","emulator-5554");
+        taskPage = new TaskPage(driver);
+        taskListPage = new TaskListPage(driver);
+        taskListPage.Alert();
+        taskListPage.clickAddTaskBtn();
     }
 
     @Given("Enter {string} and {string}")

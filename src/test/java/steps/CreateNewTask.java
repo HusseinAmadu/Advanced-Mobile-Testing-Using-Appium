@@ -14,7 +14,15 @@ public class CreateNewTask extends TestPage {
     TaskListPage taskListPage;
     @Given("Click Add new Task")
     public void clickAddNewTask() throws MalformedURLException {
-        androidStarUp();
+        androidStarUp("10000","Android Emulator","emulator-5554");
+        createTaskPage = new TaskPage(driver);
+        taskListPage = new TaskListPage(driver);
+        taskListPage.Alert();
+        taskListPage.clickAddTaskBtn();
+    }
+    @Given("Click Add new Task")
+    public void clickAddNewTaskB() throws MalformedURLException {
+        androidStarUp("10001","Android Emulator","emulator-5556");
         createTaskPage = new TaskPage(driver);
         taskListPage = new TaskListPage(driver);
         taskListPage.Alert();
